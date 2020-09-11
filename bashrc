@@ -1,0 +1,10 @@
+lcd() { cd "$@" && ls; }
+alias dc='cd && clear'
+alias :Q='exit'
+alias :q='exit'
+alias sl='ls -la' 
+alias free='free -h'
+alias cd..='cd ..'
+alias grep='grep --color=always'
+alias uptime='uptime -p'  
+alias df='df -h'
