@@ -1,4 +1,4 @@
-lcd() { cd "$@" && ls; }
+lcd() { cd "$@" && ls && pwd; }
 alias dc='cd && clear'
 alias :Q='exit'
 alias :q='exit'
@@ -8,3 +8,4 @@ alias cd..='cd ..'
 alias grep='grep --color=always'
 alias uptime='uptime -p'  
 alias df='df -h'
+alias cpo='cp -vri'
