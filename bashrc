@@ -1,4 +1,4 @@
-lcd() { cd "$@" && ls && pwd; }
+lcd() { cd "$@" && ls && echo "-----------------" &&  pwd; }
 alias dc='cd && clear'
 alias :Q='exit'
 alias :q='exit'
