@@ -9,3 +9,4 @@ alias grep='grep --color=always'
 alias uptime='uptime -p'  
 alias df='df -h'
 alias cpo='cp -vri'
+export PATH=/home/erick/LinuxScripts:$PATH
