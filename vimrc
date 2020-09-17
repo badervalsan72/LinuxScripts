@@ -12,3 +12,5 @@ set shiftwidth=4
 set autoindent 
 map q: <Nop> 
 nnoremap Q <nop> 
+set laststatus=2
+set statusline=%F
