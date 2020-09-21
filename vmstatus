@@ -1,0 +1,62 @@
+#!/bin/bash
+stats() {
+echo " 
+
+ __      ____  __                         
+ \ \    / /  \/  |                        
+  \ \  / /| \  / |                        
+   \ \/ / | |\/| |                        
+    \  /  | |  | |                        
+     \/   |_|  |_|
+
+   _____________    _______ _    _  _____
+  / ____|__   __|/\|__   __| |  | |/ ____|
+ | (___    | |  /  \  | |  | |  | | (___  
+  \___ \   | | / /\ \ | |  | |  | |\___ \ 
+  ____) |  | |/ ____ \| |  | |__| |____) |
+ |_____/   |_/_/    \_\_|   \____/|_____/ 
+
+" 
+echo "------------------------------------------"
+echo -e "\n"
+echo "Hostname and Uptime:"
+hostname
+uptime
+echo -e "---------------- \n"
+
+echo "Agent Status:"
+systemctl status waagent | grep -i 'active' #redhat/centos
+systemctl status walinuxagent.service | grep -i 'active' #ubuntu
+echo -e "---------------- \n"
+
+echo "Used Mem v Total Mem:"
+free -h | awk '/^Mem:/ {print $3 " / " $2}'
+echo -e "---------------- \n"
+
+echo "Processor count"
+cat /proc/cpuinfo | grep -i processor
+echo -e "---------------- \n"
+
+
+echo "Top 15 Mem consuming processes"
+ps axch -o cmd:20,%mem --sort=-%mem | head -n 15
+echo -e "---------------- \n"
+
+echo "Top 15 CPU consuming processes"
+ps axch -o cmd:20,%cpu --sort=-%cpu | head -n 15
+echo -e "---------------- \n"
+
+echo "Partitions and mount points"
+df -h
+echo -e "---------------- \n"
+
+echo "Check fstab"
+cat /etc/fstab
+echo -e "---------------- \n"
+
+echo "Check LSBLK" 
+lsblk -f 
+echo -e "\n"
+echo "------------------------------------------"
+} 
+stats | less
